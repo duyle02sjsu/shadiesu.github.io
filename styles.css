@@ -1,12 +1,15 @@
 .container {
+    color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 100px;
-    padding-bottom: 100px;
-    border-bottom: 0.5px solid #333;
+    padding-bottom: 10px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+
 }
 .Link {
-    font-size: 18px;
+    outline: 1px black solid;
+    font-size: 22px;
    margin-top: 60px;
     display: flex;
   justify-content: center;
@@ -15,7 +18,7 @@
 a{
    text-decoration: none;
    cursor: pointer;
-   color: black;
+   color: white;
    transition: color 0.7s ease;
 }
 
@@ -25,12 +28,97 @@ a:hover {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fcf4f4;
-
-
+    background-color: rgb(50, 48, 48);
 }
 
 .intro {
-    font-size: 30px;
+    color: white;
+    font-size: 35px;
     margin-left: 100px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+
+}
+
+/* Thumbnail Grid Layout */
+.video-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.video-thumb {
+  position: relative;
+  width: 280px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-thumb img {
+  width: 100%;
+  display: block;
+}
+
+/* Play Button Overlay Overlay */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 0, 0, 0.85);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: background 0.3s ease;
+}
+
+.video-thumb:hover .play-button {
+  background: rgb(255, 0, 0);
+}
+
+/* Modal Core Settings */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+}
+
+/* Close Button Styling */
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Responsive 16:9 Aspect Ratio Box */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

@@ -1,20 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--Images Modals Effects-->
+
+
+<!-- Effects -->
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .BG {
+        position: fixed;
+        inset: 0;
+        background-image: url("BG.png");
+        background-size: cover;
+        background-repeat: repeat;
+        z-index: -1;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .BG {
+        animation: float 3s ease-in-out infinite;
+    }
+</style>
+
+<!-- Top Buttons -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duy Le - Digital Media Art - BFA Portfolio</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <div class="Link">
     <a href="Home.html">Home</a>
     <a href="Digital.html">Digital</a>
     <a href="Video.html">Video</a>
+    <a href="Design.html">Design</a>
     <a href="Coding.html">Coding</a>
     <a href="Photography.html">Photography</a>
     <a href="About.html">About</a>
 </div>
+
+<!--HEADERS-->
 <body>
     
     <div class="container">
@@ -26,10 +65,35 @@
     <div class="intro">
         <p>Featured Projects</p>
     </div> 
+</body>
 
+<!-- Work Project Showcase-->
+ <!-- Sakura video-->
+    <!-- Video Grid Container -->
+    <div class="video-grid">
+            <!-- Video Thumbnail 1 -->
+            <div class="video-thumb" data-video-id="v-rgGUymfZE">
+                <img src="https://res.cloudinary.com/dyf1xfmxu/image/upload/v1764829879/image_2025-12-03_223117122_zpmoiv.png" alt="Sakura video">
+                <div class="play-button">▶</div>
+            </div>
 
-    <!-- Content will go here -->
+            </div>
+
+            <!-- Video Modal Container -->
+            <div id="videoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div class="video-container">
+                <iframe id="videoPlayer" width="560" height="315" src="https://www.youtube.com/embed/v-rgGUymfZE?si=mlNZi67eIu4RpZ2J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            </div>
+
+<!-- Background Image -->
+<div class="BG"></div>
+<img src="BG.png" alt="Background Image" class="BG">
+
 
 <script src="script.js"></script>
-</body>
+
 </html>
