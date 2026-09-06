@@ -313,3 +313,33 @@ body {
 .fade-out {
     opacity: 0 !important;
 }
+
+/* Site Footer Styling */
+.site-footer {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+    background-color: transparent; /* Or set to your page background color */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+    margin-top: 60px; /* Space between gallery content and footer */
+}
+
+.site-footer p {
+    color: #fdfbfb; /* Muted gray so it doesn't distract from portfolio items */
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Ensure your main page content stretches to push the footer down */
+main, .portfolio-grid {
+    flex: 1;
+}
