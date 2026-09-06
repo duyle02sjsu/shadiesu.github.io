@@ -300,3 +300,16 @@ body {
         opacity: 1;               /* Fully visible on hover */
         pointer-events: none;     /* Ensures the overlay doesn't block clicks on the thumbnail */
         }
+
+        /* Smooth fade transitions for modal media */
+#modalImage,
+#videoPlayer,
+.modal-extra-media {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* Controls fade duration */
+}
+
+/* Fade-out state applied dynamically via JavaScript */
+.fade-out {
+    opacity: 0 !important;
+}
