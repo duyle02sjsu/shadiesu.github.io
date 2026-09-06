@@ -78,65 +78,125 @@ body {
         
         }
 
-        .modal-content {
-        position: relative;
-        width: 90%;
-        max-width: 1200px;
-        margin: 50px auto;
-        }
+/* Modal Content Box - Keeps margin at the top so image isn't flush with viewport */
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto 30px auto; /* 50px top margin creates the buffer gap above the media */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+/* Close "X" Button pinned to upper-right of the viewport */
+.close-btn {
+    position: fixed;
+    top: 24px;   /* Safe gap from top edge */
+    right: 24px;  /* Safe gap from right edge */
+    z-index: 1020;
+    
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
 
-        /* Responsive 16:9 Aspect Ratio Box */
-        .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 ratio */
-        height: 0;
-        }
+/* Hover effect */
+.close-btn:hover,
+.close-btn:focus {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    transform: scale(1.1);
+    outline: none;
+}
 
-        .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        }
+/* On smaller mobile screens, pull it in slightly so it's not cut off */
+@media (max-width: 600px) {
+    .close-btn {
+        top: 16px;
+        right: 16px;
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+    }
+}
+/* Ensure image/video container preserves top spacing */
+.video-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px; /* Adds additional gap between close button and media */
+}
+/* ONLY apply 16:9 ratio box when showing a YouTube Video */
+.video-container.has-video {
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+}
 
-        .video-caption {
-        text-align: left; /* Changes text alignment to left for easier reading */
-        color: #ffffff;
-        margin-top: 10px;
-        font-family: sans-serif;
-        padding: 0 10px;
-        }
+/* YouTube Iframe stays locked inside the 16:9 ratio box */
+.video-container.has-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-        /* Style your description header specifically */
-        .video-caption h3 {
-        font-size: 2rem;
-        padding-top: 10px;
-        margin-bottom: 10px; /* Space directly below the header */
-        text-align: center;
-        }
+/* Natural layout for GIFs / Static Images */
+.video-container.has-image {
+    padding-bottom: 0;
+    height: auto;
+}
 
-        /* Style the description paragraphs */
-        .video-caption p {
-        font-size: 1.4rem;
-        line-height: 1.6; /* Adds comfortable line spacing between text rows */
-        margin: 0 0 8px 0; 
-        color: #dddddd;
-        }
+/* GIF & Static Image Responsive Sizing (Prevents text overlap) */
+#modalImage {
+    max-width: 100%;
+    max-height: 60vh; /* Limits image height so caption always fits below */
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+}
 
-        /* Style ONLY the modal image without changing the video container */
-        #modalImage {
-        width: 100%;           /* Shrink or expand the horizontal space (e.g., 60%, 80%, 100%) */
-        max-width: 900px;     /* Set a strict maximum width limit so it doesn't get too giant */
-        max-height: 700px;    /* Limit the vertical height explicitly */
-        margin: 0 auto;       /* Keep the image perfectly centered horizontally */
-        display: block;       /* Necessary block behavior for proper centering */
-        object-fit: contain;  /* Scale the image beautifully without squeezing or distorting it */
-        border-radius: 8px;   /* Add soft corners to your picture presentation */
-        }
+/* Dynamic extra media elements */
+.modal-extra-media {
+    max-width: 100% !important;
+    max-height: 60vh !important;
+    width: auto !important;
+    height: auto !important;
+    display: block !important;
+    margin: 20px auto 0 auto !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+}
 
-/* Navigation Buttons */
+/* Caption formatting with safe spacing */
+.video-caption {
+    width: 100%;
+    color: #ffffff;
+    margin-top: 20px; /* Space between media and text */
+    padding: 0 10px 20px 10px;
+    box-sizing: border-box;
+    text-align: center;
+}/* Navigation Buttons */
 
         .nav-btn {
         position: fixed;                        /* FIXED: Snaps the buttons directly to the browser view borders */

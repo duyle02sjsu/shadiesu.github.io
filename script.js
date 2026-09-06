@@ -32,16 +32,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const primaryFile = mediaFiles[0];
 
     // 4. Handle the PRIMARY media item (Image or YouTube Video)
-    if (mediaType === "video") {
-      iframe.src = `https://www.youtube.com/embed/${primaryFile}?autoplay=1&origin=${window.location.origin}`;
-      iframe.style.display = "block";
-      modalImage.style.display = "none";
-    } else if (mediaType === "image") {
-      modalImage.src = primaryFile;
-      modalImage.style.display = "block";
-      iframe.style.display = "none";
-    }
+const videoContainer = modal.querySelector(".video-container");
 
+if (mediaType === "video") {
+    // Enable 16:9 video layout
+    videoContainer.classList.add("has-video");
+    videoContainer.classList.remove("has-image");
+    
+    iframe.src = `https://www.youtube.com/embed/${primaryFile}?autoplay=1&origin=${encodeURIComponent(window.location.origin)}`;
+    iframe.style.display = "block";
+    modalImage.style.display = "none";
+} else if (mediaType === "image") {
+    // Disable 16:9 padding so the GIF flows naturally above the text
+    videoContainer.classList.add("has-image");
+    videoContainer.classList.remove("has-video");
+    
+    modalImage.src = primaryFile;
+    modalImage.style.display = "block";
+    iframe.style.display = "none";
+}
     // 5. Handle EXTRA media items if they exist, stacking them right above the caption
     if (mediaFiles.length > 1) {
       for (let i = 1; i < mediaFiles.length; i++) {
