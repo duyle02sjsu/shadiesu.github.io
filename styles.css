@@ -1,7 +1,7 @@
 .container {
     color: white;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 100px;
     padding-bottom: 10px;
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
@@ -9,11 +9,11 @@
 }
 .Link {
     outline: 1px black solid;
-    font-size: 22px;
+    font-size: 17px;
    margin-top: 60px;
     display: flex;
   justify-content: center;
-  gap: 40px; 
+  gap: 37px; 
 }
 a{
    text-decoration: none;
@@ -29,96 +29,214 @@ a:hover {
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(50, 48, 48);
+
+
 }
 
 .intro {
     color: white;
-    font-size: 35px;
-    margin-left: 100px;
+    font-size: 28px;
+    margin-left: 112px; /* ◄ Changed from 100px (160px thumb margin matches better now) */
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-
 }
 
-/* Thumbnail Grid Layout */
 .video-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    row-gap: 50px; 
+    flex-wrap: wrap;
+    justify-content: center; /* ◄ Center the items horizontally on the screen */
+    padding: 0 40px;         /* ◄ Creates a nice safe padding cushion on the screen edges */
 }
 
 .video-thumb {
-  position: relative;
-  width: 280px;
-  cursor: pointer;
-  border-radius: 8px;
-  overflow: hidden;
+    position: relative;
+    width: 370px;       /* ◄ Changed from 660px (660 * 0.7 = 462) */
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-left: 0;     /* ◄ Changed from 160px. Let .video-grid handle the alignment dynamically */
 }
 
-.video-thumb img {
-  width: 100%;
-  display: block;
-}
+        .video-thumb img {
+        width: 100%;
+        display: block;
+        }
 
-/* Play Button Overlay Overlay */
-.play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 0, 0, 0.85);
-  color: white;
-  padding: 10px 18px;
-  border-radius: 50%;
-  font-size: 20px;
-  transition: background 0.3s ease;
-}
+        /* Modal Core Settings */
+        .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow-y: auto;
+        
+        }
 
-.video-thumb:hover .play-button {
-  background: rgb(255, 0, 0);
-}
+        .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        margin: 50px auto;
+        }
 
-/* Modal Core Settings */
-.modal {
-  display: none; 
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-}
 
-.modal-content {
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-}
+        /* Responsive 16:9 Aspect Ratio Box */
+        .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 ratio */
+        height: 0;
+        }
 
-/* Close Button Styling */
-.close-btn {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  color: #fff;
-  font-size: 35px;
-  font-weight: bold;
-  cursor: pointer;
-}
+        .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
 
-/* Responsive 16:9 Aspect Ratio Box */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  height: 0;
-}
+        .video-caption {
+        text-align: left; /* Changes text alignment to left for easier reading */
+        color: #ffffff;
+        margin-top: 10px;
+        font-family: sans-serif;
+        padding: 0 10px;
+        }
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+        /* Style your description header specifically */
+        .video-caption h3 {
+        font-size: 2rem;
+        padding-top: 10px;
+        margin-bottom: 10px; /* Space directly below the header */
+        text-align: center;
+        }
+
+        /* Style the description paragraphs */
+        .video-caption p {
+        font-size: 1.4rem;
+        line-height: 1.6; /* Adds comfortable line spacing between text rows */
+        margin: 0 0 8px 0; 
+        color: #dddddd;
+        }
+
+        /* Style ONLY the modal image without changing the video container */
+        #modalImage {
+        width: 100%;           /* Shrink or expand the horizontal space (e.g., 60%, 80%, 100%) */
+        max-width: 900px;     /* Set a strict maximum width limit so it doesn't get too giant */
+        max-height: 700px;    /* Limit the vertical height explicitly */
+        margin: 0 auto;       /* Keep the image perfectly centered horizontally */
+        display: block;       /* Necessary block behavior for proper centering */
+        object-fit: contain;  /* Scale the image beautifully without squeezing or distorting it */
+        border-radius: 8px;   /* Add soft corners to your picture presentation */
+        }
+
+/* Navigation Buttons */
+
+        .nav-btn {
+        position: fixed;                        /* FIXED: Snaps the buttons directly to the browser view borders */
+        top: 50%;                               /* Centers them vertically on the screen */
+        transform: translateY(-50%);            /* Keeps the vertical center perfectly balanced */
+        background: rgba(255, 255, 255, 0.15); 
+        color: #ffffff;                         
+        border: 1px solid rgba(255, 255, 255, 0.25); 
+        font-size: 2rem;
+        width: 55px;
+        height: 55px;
+        display: flex-start;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 7px;
+        cursor: pointer;
+        border-radius: 50%;                     
+        transition: background 0.2s ease, transform 0.2s ease; 
+        z-index: 9999;                          /* Extremely high index to ensure they float over everything */
+        }
+
+        /* Snaps the previous button to the absolute left edge of the page window */
+        .nav-btn.left {
+        left: 30px;                             /* Creates a clean spacing cushion from the left screen wall */
+        padding-right: 12px;
+        }
+
+        /* Snaps the next button to the absolute right edge of the page window */
+        .nav-btn.right {
+        right: 30px;                            /* Creates a clean spacing cushion from the right screen wall */
+        padding-left: 12px;
+        }
+
+        /* Hover State: Blends a brighter background circle with your 15% zoom effect */
+        .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.35);  
+        transform: translateY(-50%) scale(1.15); 
+        }
+
+        /* Mobile framework protection so they stay within touch range on phones */
+        @media (max-width: 768px) {
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+        }
+        .nav-btn.left { left: 15px; }
+        .nav-btn.right { right: 15px; }
+        }
+
+
+<!-- Fade Black Effect-->
+
+        css/* 1. Prepare the thumbnail container */
+        .video-thumb {
+        position: relative;       /* Crucial: Traps the absolute overlay inside this box */
+        overflow: hidden;         /* Keeps everything contained neatly */
+        cursor: pointer;
+        }
+
+        /* 2. Target the image inside the thumbnail */
+        .video-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;        /* Ensures images stretch cleanly to fill their cells */
+        display: block;
+        }
+
+        /* 3. Create the Black Overlay (Hidden by default) */
+        .video-thumb::after {
+        content: attr(data-hover-text);              /* Keeps it a clean black overlay. Add text inside "" if you want text */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /* Black with 50% opacity. Increase to 0.7 for darker, decrease for lighter */
+        
+        /* Centering settings in case you decide to add text later */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;            /* Prevents long text from hitting the edges */
+        text-align: center;       /* Centers multi-line text */
+        box-sizing: border-box;     /* Ensures padding doesn't break the layout */
+
+        /* White Text Styling */
+        color: #ffffff;           
+        font-family: sans-serif;  
+        font-size: 1.6rem;        
+        font-weight: bold;
+        text-shadow: 1px 1px 0 #000000, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+        
+        /* Fade Effect Setup */
+        opacity: 0;               /* Starts completely invisible */
+        transition: opacity 0.3s ease; /* Controls fade speed (0.3 seconds) */
+        }
+
+        /* 4. The Hover Trigger: Fade the overlay in */
+        .video-thumb:hover::after {
+        opacity: 1;               /* Fully visible on hover */
+        pointer-events: none;     /* Ensures the overlay doesn't block clicks on the thumbnail */
+        }
