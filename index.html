@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Images Modals Effects-->
-
-
-<!-- Effects -->
-<style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-    }
-
-    .BG {
-        position: fixed;
-        inset: 0;
-        background-image: url("BG.png");
-        background-size: cover;
-        background-repeat: repeat;
-        z-index: -1;
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    }
-
-    .BG {
-        animation: float 3s ease-in-out infinite;
-    }
-</style>
-
-<!-- Top Buttons -->
-
 <head>
     <title>Shadiesu - Digital Media Art - BFA Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<div class="Link">
-    <a href="Home.html">Home</a>
-    <a href="Digital.html">Digital</a>
-    <a href="Video.html">Video</a>
-    <a href="Design.html">Design</a>
-    <a href="Coding.html">Coding</a>
-    <a href="Photography.html">Photography</a>
-    <a href="About.html">About</a>
-</div>
+<body>
+<header class="top-header">
+    <a class="site-brand top-brand" href="index.html" aria-label="Duy Le Portfolio home">
+        <span class="site-brand-name">Duy Le</span>
+        <span class="site-brand-title">Portfolio · Digital Media Art</span>
+    </a>
+    <nav class="Link Link--normal" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="Digital.html">Digital</a>
+        <a href="Video.html">Video</a>
+        <a href="Design.html">Design</a>
+        <a href="Coding.html">Coding</a>
+        <a href="Photography.html">Photography</a>
+        <a href="About.html">About</a>
+    </nav>
+</header>
+
+<header class="site-header" aria-hidden="true" inert>
+    <a class="site-brand site-brand--compact" href="index.html" aria-label="Duy Le Portfolio home">
+        <span class="site-brand-mark" aria-hidden="true">DL</span>
+        <span class="site-brand-title">Portfolio</span>
+    </a>
+    <nav class="Link Link--sticky" aria-label="Sticky main navigation">
+        <a href="index.html">Home</a>
+        <a href="Digital.html">Digital</a>
+        <a href="Video.html">Video</a>
+        <a href="Design.html">Design</a>
+        <a href="Coding.html">Coding</a>
+        <a href="Photography.html">Photography</a>
+        <a href="About.html">About</a>
+    </nav>
+</header>
 
 <!--HEADERS-->
-<body>
     
-    <div class="container">
-        <h1>Duy Le Art</h1>
-        <h1>Illustrator · Digital artist</h1>
-        <h1>Digital Media Art - BFA Portfolio</h1>
+    <div class="home-hero">
+        <p class="hero-kicker">Selected projects · 2024—2026</p>
+        <h1>Images take <span>unexpected turns.</span></h1>
+        <p class="hero-subtitle">Illustration · Digital media · Creative coding</p>
     </div>
-    
-    <div class="intro">
-        <p>Featured Projects</p>
-    </div> 
-</body>
-
 <!-- Work Project Showcase line 1-->
  <!-- Sakura video-->
     <!-- Video Grid Container -->
-    <div class="video-grid">
+    <div class="video-grid video-grid--balanced">
         <!-- 1x1 -->
             <div class="video-thumb" data-type="image" 
             data-hover-text="Glitch Art / Album Cover" data-video-id="Mushroomhead.png, Mennequin.png" 
@@ -119,12 +97,13 @@
                     <div id="videoCaption" class="video-caption"></div>
             </div>
             </div>
+    </div>
 
 
 <!-- Work Project Showcase line 2-->
         <!-- Sakura video-->
         <!-- 2x1 -->
-    <div class="video-grid">
+    <div class="video-grid video-grid--feature-left">
         <!-- Video Thumbnail 1 -->
             <div class="video-thumb" data-type="video" 
             data-hover-text="Digital Animation Project" data-video-id="v-rgGUymfZE" 
@@ -173,12 +152,13 @@
                     <div id="videoCaption" class="video-caption"></div>
             </div>
             </div>
+    </div>
 
 
 <!-- Work Project Showcase line 3-->
  <!-- Sakura video-->
     <!-- Video Grid Container -->
-    <div class="video-grid">
+    <div class="video-grid video-grid--feature-right">
         <!-- Video Thumbnail 1 -->
             <div class="video-thumb" data-type="video" 
             data-hover-text="Society of Spectacle" data-video-id="nF94g0yWZJ4" 
@@ -227,6 +207,7 @@
                     <div id="videoCaption" class="video-caption"></div>
             </div>
             </div>
+    </div>
 <div id="videoModal" class="modal">
     <div class="modal-content">
         <!-- Close Button (X Symbol) -->
@@ -245,13 +226,12 @@
 
 
 
-<!-- Background Image -->
-<div class="BG"></div>
-<img src="BG.png" alt="Background Image" class="BG">
+<div class="BG" aria-hidden="true"></div>
 
 <footer class="site-footer">
   <p>&copy;2026 Duy Le. All rights reserved. Designed & Coded by me.</p>
 </footer>
 <script src="script.js"></script>
 
+</body>
 </html>

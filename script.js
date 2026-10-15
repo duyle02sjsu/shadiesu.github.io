@@ -1,5 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const originalNavigation = document.querySelector(".top-header");
+  const stickyHeader = document.querySelector(".site-header");
+
+  if (originalNavigation && stickyHeader) {
+    const navigationObserver = new IntersectionObserver(([entry]) => {
+      const shouldShowStickyHeader = !entry.isIntersecting;
+      stickyHeader.classList.toggle("is-visible", shouldShowStickyHeader);
+      stickyHeader.setAttribute("aria-hidden", String(!shouldShowStickyHeader));
+      stickyHeader.inert = !shouldShowStickyHeader;
+    });
+
+    navigationObserver.observe(originalNavigation);
+  }
+
+  const transitionKey = "__portfolio_page_transition__:";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduceMotion) {
+    if (window.name.startsWith(transitionKey)) {
+      window.name = window.name.slice(transitionKey.length);
+      document.body.classList.add("page-entering");
+      window.setTimeout(() => document.body.classList.remove("page-entering"), 260);
+    }
+
+    document.addEventListener("click", event => {
+      const link = event.target.closest("a[href]");
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
+
+      const destination = new URL(link.href, window.location.href);
+      if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) return;
+
+      event.preventDefault();
+      window.name = `${transitionKey}${window.name}`;
+      document.body.classList.add("page-leaving");
+      window.setTimeout(() => window.location.assign(destination.href), 180);
+    });
+  }
+
   const modal = document.getElementById("videoModal");
+  if (!modal) return;
+
   const iframe = document.getElementById("videoPlayer");
   const modalImage = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".close-btn");
