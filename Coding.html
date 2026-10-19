@@ -26,10 +26,118 @@
 		<h1>Coding</h1>
 		<p class="collection-description">Creative code, interactive sketches, and experiments with systems and motion.</p>
 	</header>
-	<section class="collection-grid" aria-label="Coding project spaces">
-		<div class="project-placeholder" role="img" aria-label="Empty coding project space 01"><span class="project-placeholder-number">01</span><span class="project-placeholder-add" aria-hidden="true">+</span></div>
-		<div class="project-placeholder" role="img" aria-label="Empty coding project space 02"><span class="project-placeholder-number">02</span><span class="project-placeholder-add" aria-hidden="true">+</span></div>
-		<div class="project-placeholder" role="img" aria-label="Empty coding project space 03"><span class="project-placeholder-number">03</span><span class="project-placeholder-add" aria-hidden="true">+</span></div>
+	<section class="collection-grid coding-project-grid" aria-label="Coding projects">
+		<article class="coding-project-card">
+			<a class="coding-project-image-link" href="coding-projects/face-sketch/index.html" aria-label="Open Interactive Face project">
+				<img class="coding-project-image" src="coding-projects/previews/face-sketch.png" alt="Interactive geometric face with colorful eyes and mouth">
+			</a>
+			<div class="coding-project-content">
+				<p class="coding-project-type">p5.js · Interactive sketch</p>
+				<h2>Interactive Face</h2>
+				<dl class="coding-project-details">
+					<div>
+						<dt>Concept</dt>
+						<dd>This is my basic face made with couple of shapes and functions. By connecting canvas elements with mouse position and clicks, the artwork feel playful and with a bit of chaos</dd>
+					</div>
+					<div>
+						<dt>What I did</dt>
+						<dd>In this sketch I divided it into 3 parts, the face, the eyes and the mouth and tears using basic geometric shapes. I also integrated the pupils with interactive mouse tracking (mouseX, mouseY) with the constrain() function and the random() function to give it more lively effect. And finally, I added the mouseIsPressed() function to change all of the face feature's color give it a more chaotic feel.</dd>
+					</div>
+					<div>
+						<dt>What I learned</dt>
+						<dd>This exercise was a good practice to get familiar with the basic shapes and functions for me. It was quick and simple some parts I found it challenging to implement the interactive elements</dd>
+					</div>
+				</dl>
+				<div class="coding-project-links">
+					<a href="coding-projects/face-sketch/index.html">Run project <span aria-hidden="true">↗</span></a>
+					<a href="coding-projects/face-sketch/sketch.js">View code</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="coding-project-card">
+			<a class="coding-project-image-link" href="coding-projects/cat-dog-sketch/index.html" aria-label="Open Cat and Dog project">
+				<img class="coding-project-image" src="coding-projects/previews/cat-dog-sketch.png" alt="Illustrated cat with a fish and colorful striped background">
+			</a>
+			<div class="coding-project-content">
+				<p class="coding-project-type">p5.js · Interactive sketch</p>
+				<h2>Cat or Dog?</h2>
+				<dl class="coding-project-details">
+					<div>
+						<dt>Concept</dt>
+						<dd>This is the second exercise where I explored more advanced p5.js functions. Using Exercise 1 as the template, I experimented with different built-in functions and techniques. the most interesting part was toggling between cat and dog completely using keys</dd>
+					</div>
+					<div>
+						<dt>What I did</dt>
+						<dd>In this sketch, I focused on enhancing the interactivity and visual appeal of the artwork. I programmed the toggling using the variable (isCat) to toggle between the two states with key presses ('C or c' for cat, 'D or d' for dog). I used one of the examples templates to tweak them for the background. Using Perlin noise (noise()) to generate verticle color stripes, alongside with an animated text drop ("MEOW" or "WOOF") that resets and scales up using loadFont() whenever the character state changes</dd>
+					</div>
+					<div>
+						<dt>What I learned</dt>
+						<dd>Getting familar with effect like noise and frameCount is challenging but it was fun once I understand them. Despite this project can be way more overwhelming without the examples, I was able to understand the logic behind the code and use it in my own way.</dd>
+					</div>
+				</dl>
+				<div class="coding-project-links">
+					<a href="coding-projects/cat-dog-sketch/index.html">Run project <span aria-hidden="true">↗</span></a>
+					<a href="coding-projects/cat-dog-sketch/sketch.js">View code</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="coding-project-card">
+			<a class="coding-project-image-link" href="coding-projects/firefly-sketch/index.html" aria-label="Open Firefly Simulation project">
+				<img class="coding-project-image" src="coding-projects/previews/firefly-sketch.png" alt="Glowing animated fireflies against a dark background">
+			</a>
+			<div class="coding-project-content">
+				<p class="coding-project-type">p5.js · Generative animation</p>
+				<h2>Firefly Simulation</h2>
+				<dl class="coding-project-details">
+					<div>
+						<dt>Concept</dt>
+						<dd>This is my firefly simulation using an algorithm to create dynamic and interactive fireflies.</dd>
+					</div>
+					<div>
+						<dt>What I did</dt>
+						<dd>I built a system of functions that control each firefly’s movement, wing-like motion, glow intensity, and mouse-triggered interactions so the animation feels alive and responsive.</dd>
+					</div>
+					<div>
+						<dt>What I learned</dt>
+						<dd>This exercise helped me get more comfortable with looping animations, motion logic, and creating visual behavior that feels organic. It was satisfying to see the scene become more interactive as I refined the detail and timing.</dd>
+					</div>
+				</dl>
+				<div class="coding-project-links">
+					<a href="coding-projects/firefly-sketch/index.html">Run project <span aria-hidden="true">↗</span></a>
+					<a href="coding-projects/firefly-sketch/sketch.js">View code</a>
+				</div>
+			</div>
+		</article>
+
+		<article class="coding-project-card">
+			<a class="coding-project-image-link" href="coding-projects/drawing-app/index.html" aria-label="Open Digital Drawing Studio project">
+				<img class="coding-project-image" src="coding-projects/previews/drawing-app.png" alt="Digital drawing app with a white canvas and colorful brush strokes">
+			</a>
+			<div class="coding-project-content">
+				<p class="coding-project-type">p5.js · Drawing tool</p>
+				<h2>Digital Drawing Studio</h2>
+				<dl class="coding-project-details">
+					<div>
+						<dt>Concept</dt>
+						<dd>For this project, I want to approach it in a directive way, what do I usually use for painting, what function do I need and how to make the drawing experience effective and smooth</dd>
+					</div>
+					<div>
+						<dt>What I did</dt>
+						<dd>To create a more versatile and user-friendly drawing experience, I developed a collection of brushes like particle airbrushes and multi strand hairbrush. I also added the native DOM components like HSB color sliders and a live color preview block that directly update stroke properties. To ensure seamless control, I also implemented an undo and and redo history system just like in the standard drawing system (Ctrl+Z/Ctrl+Shift+Z). And finally for a nice touch, I added linear interpolation (lerp()) to smooth cursor movement while drawing and a stickykey hold to allow continious adjustment to brush sizes ([and])</dd>
+					</div>
+					<div>
+						<dt>What I learned</dt>
+						<dd>Through building this small program, I gained a much more understanding of digital drawing management using stack manipulation like (push() and pop()) and how to implement a more complex system with multiple functions. I also learned how to use the lerp() function to create smooth transitions and movements.</dd>
+					</div>
+				</dl>
+				<div class="coding-project-links">
+					<a href="coding-projects/drawing-app/index.html">Run project <span aria-hidden="true">↗</span></a>
+					<a href="coding-projects/drawing-app/sketch.js">View code</a>
+				</div>
+			</div>
+		</article>
 	</section>
 </main>
 <footer class="site-footer"><p>&copy; 2026 Duy Le. All rights reserved.</p></footer>

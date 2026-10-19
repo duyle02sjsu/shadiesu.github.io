@@ -162,7 +162,7 @@
 
 .about-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 400px);
     align-items: center;
     gap: clamp(40px, 8vw, 120px);
     padding: 76px 0 68px;
@@ -195,12 +195,29 @@
     line-height: 1.7;
 }
 
-.about-profile-placeholder {
+.about-profile-image {
+    display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    max-width: 400px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    object-position: center 60%;
     border: 1px solid rgba(255, 255, 255, 0.38);
-    background: rgba(15, 19, 17, 0.32);
-    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.025);
+    border-radius: 20px;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28);
+    justify-self: end;
+    filter: saturate(1.08) contrast(1.04);
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .about-profile-image {
+        justify-self: center;
+        max-width: 320px;
+    }
 }
 
 .about-section {
@@ -316,6 +333,152 @@
 
 .collection-main[data-category="photography"] .project-placeholder {
     aspect-ratio: 3 / 4;
+}
+
+.coding-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.coding-project-card {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    background: rgba(13, 17, 15, 0.68);
+}
+
+.coding-project-image-link {
+    display: block;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.coding-project-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform 220ms ease;
+}
+
+.coding-project-image-link:hover .coding-project-image,
+.coding-project-image-link:focus-visible .coding-project-image {
+    transform: scale(1.035);
+}
+
+.coding-project-content {
+    padding: 22px 24px 24px;
+}
+
+.coding-project-type {
+    margin: 0 0 10px;
+    color: #67d4a8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.coding-project-content h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.65rem;
+    line-height: 1.2;
+}
+
+.coding-project-details {
+    margin: 20px 0 22px;
+}
+
+.coding-project-details > div {
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.coding-project-details dt {
+    margin-bottom: 6px;
+    color: #67d4a8;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.coding-project-details dd {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+.coding-project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.coding-project-links a:first-child {
+    color: #67d4a8;
+}
+
+.coding-project-links a:first-child:hover,
+.coding-project-links a:first-child:focus-visible {
+    color: #a1f0ce;
+}
+
+.coding-demo-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 20px 56px;
+    box-sizing: border-box;
+    background: #202522;
+    color: #f5f5f5;
+}
+
+.coding-demo-header {
+    width: min(100%, 960px);
+    margin: 0 auto 24px;
+}
+
+.coding-demo-back {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #67d4a8;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.coding-demo-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.coding-demo-header p {
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+}
+
+.coding-demo-instructions {
+    padding: 14px 18px;
+    border-left: 3px solid #67d4a8;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.coding-demo-page canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 24px auto 0;
+}
+
+.coding-demo-page button,
+.coding-demo-page input {
+    font: inherit;
 }
 
 body.page-leaving > :not(.top-header):not(.site-header):not(.BG),
@@ -454,6 +617,10 @@ body.page-entering .BG {
         padding-top: 28px;
     }
 
+    .coding-project-grid {
+        grid-template-columns: 1fr;
+    }
+
     .Link {
         justify-content: flex-start;
         gap: 4px 18px;
@@ -476,6 +643,10 @@ body.page-entering .BG {
 
     .BG {
         animation: none;
+    }
+
+    .coding-project-image {
+        transition: none;
     }
 }
 a{
