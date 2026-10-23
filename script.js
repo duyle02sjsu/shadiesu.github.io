@@ -76,6 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 4. Handle PRIMARY media item layout
     const videoContainer = modal.querySelector(".video-container");
+    modal.querySelector(".modal-content").classList.toggle(
+      "has-large-images",
+      thumb.hasAttribute("data-modal-large-images")
+    );
 
     if (mediaType === "video") {
       videoContainer.classList.add("has-video");
