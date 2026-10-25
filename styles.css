@@ -1320,6 +1320,10 @@ main, .portfolio-grid {
     grid-column: span 4;
 }
 
+.illustration-tile:nth-child(7) {
+    grid-column: 5 / span 4;
+}
+
 .illustration-image-link {
     position: relative;
     display: flex;
