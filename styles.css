@@ -339,6 +339,30 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.design-project-section {
+    padding-top: 38px;
+}
+
+.design-project-section-heading {
+    margin-bottom: 24px;
+}
+
+.design-project-section-heading h2 {
+    margin: 0;
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.design-project-section-heading .collection-description {
+    margin-top: 10px;
+}
+
+.design-3d-grid {
+    padding: 0 0 24px;
+}
+
 .coding-project-card {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -375,6 +399,19 @@
     position: absolute;
     inset: 0;
     height: 100%;
+}
+
+.design-3d-image-link .coding-project-image {
+    object-fit: contain;
+}
+
+.design-other-grid .design-project-image-link .coding-project-image {
+    object-fit: contain;
+}
+
+.design-other-grid .design-project-image-link:hover .coding-project-image,
+.design-other-grid .design-project-image-link:focus-visible .coding-project-image {
+    transform: none;
 }
 
 .coding-project-summary {
