@@ -13,11 +13,9 @@
     </a>
     <nav class="Link Link--normal" aria-label="Main navigation">
         <a href="index.html" aria-current="page">Home</a>
-        <a href="Digital.html">Digital</a>
-        <a href="Video.html">Video</a>
+        <a href="Illustration.html">Illustration</a>
         <a href="Design.html">Design</a>
         <a href="Coding.html">Coding</a>
-        <a href="Photography.html">Photography</a>
         <a href="About.html">About</a>
     </nav>
 </header>
@@ -29,11 +27,9 @@
     </a>
     <nav class="Link Link--sticky" aria-label="Sticky main navigation">
         <a href="index.html">Home</a>
-        <a href="Digital.html">Digital</a>
-        <a href="Video.html">Video</a>
+        <a href="Illustration.html">Illustration</a>
         <a href="Design.html">Design</a>
         <a href="Coding.html">Coding</a>
-        <a href="Photography.html">Photography</a>
         <a href="About.html">About</a>
     </nav>
 </header>
@@ -41,14 +37,15 @@
 <!--HEADERS-->
     
     <div class="home-hero">
-        <p class="hero-kicker">Selected projects</p>
-        <h1>Exploring ideas through <span>images, motion, and code.</span></h1>
-        <p class="hero-subtitle">A selection of work in illustration, digital media, animation, graphic design, and creative coding.</p>
+        <p class="hero-kicker">Selected work</p>
+        <h1>Digital Media <span>Art Portfolio</span></h1>
+        <p class="hero-subtitle">Selected projects that use digital tools and a range of media including illustration, animation, video, design, and code.</p>
     </div>
 <!-- Work Project Showcase line 1-->
  <!-- Sakura video-->
     <!-- Video Grid Container -->
-    <div class="video-grid video-grid--balanced">
+    <section class="home-project-gallery" aria-label="Selected projects">
+    <div class="home-project-group">
         <!-- 1x1 -->
             <div class="video-thumb" data-type="image" 
             data-hover-text="Glitch Art / Album Cover" data-video-id="Mushroomhead.png, Mennequin.png"
@@ -60,6 +57,10 @@
                 </p><br><p>
                 <em>Tools used: Notepad++, Adobe Photoshop</em></p>">
             <img src="Mushroomhead.png">
+            <div class="home-project-caption">
+                <span>Image experiment</span>
+                <h2>Glitch Art / Album Cover</h2>
+            </div>
             </div>
 
         <!-- 1x2 -->
@@ -70,6 +71,10 @@
             I also tweak the colors to make it more realistic to the real life objects like the skateboard.
                 </p><br><p><em>Tools used: Adobe Illustrator</em></p>">
             <img src="sticker.png">
+            <div class="home-project-caption">
+                <span>Graphic design</span>
+                <h2>Sticker Project</h2>
+            </div>
             </div>
 
         <!-- 1x3 -->
@@ -80,36 +85,19 @@
                 And finally I added some color tweaks randomly to make it more visually appealing of a construction robot. The coding is done in p5.js and the code can be found in the link below.
                 <br><a href='https://editor.p5js.org/duy.le02/sketches/MBBWQ1VL0'>Go to p5.js code</a></p><br><p><em>Tools used: Codepen</em></p>">
             <img src="Robot.png">
-            </div>
-
-        <!-- Video Modal Container -->
-            <div id="videoModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-
-                <button id="prevBtn" class="nav-btn left">◀</button>
-                <button id="nextBtn" class="nav-btn right">▶</button>
-                
-                    <div class="video-container">
-                    <iframe id="videoPlayer" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer;
-                    autoplay; clipboard-write; 
-                    encrypted-media; gyroscope; 
-                    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    
-        <!-- NEW: Image tag for full-size pictures (Hidden by default) -->
-                    <img id="modalImage" src="" alt="Modal View" style="display: none;">
-                </div>
-
-                    <div id="videoCaption" class="video-caption"></div>
+            <div class="home-project-caption">
+                <span>Creative coding</span>
+                <h2>Creative Coding Project</h2>
             </div>
             </div>
+
     </div>
 
 
 <!-- Work Project Showcase line 2-->
         <!-- Sakura video-->
         <!-- 2x1 -->
-    <div class="video-grid video-grid--feature-left">
+    <div class="home-project-group">
         <!-- Video Thumbnail 1 -->
             <div class="video-thumb" data-type="video" 
             data-hover-text="Digital Animation Project" data-video-id="v-rgGUymfZE" 
@@ -118,6 +106,10 @@
                 Clip Studio Paint to draw out the animation and then I converted it into After Effects to add more effects and finish the animation. I also added some sound effects to make it more realistic and fun to watch. The final product is a short animation that simulates a game experience with a nostalgic feel.
                 </p><br><p><em>Tools used: Clip Studio Paint, Adobe After Effects</em></p>">
             <img src="https://res.cloudinary.com/dyf1xfmxu/image/upload/v1764829879/image_2025-12-03_223117122_zpmoiv.png">
+            <div class="home-project-caption">
+                <span>Digital animation</span>
+                <h2>Digital Animation Project</h2>
+            </div>
             </div>
 
         <!-- 2x2 -->
@@ -125,6 +117,10 @@
             data-hover-text="Technology Paradoxes" data-video-id="CwCoBTR_AUM" 
             data-caption="<h3>Technology Paradoxes</h3><p>This video explores the uneasy relationship between humans and technology by using repetition, distortion, and abrupt edits to create a feeling of anxiety and loss of control. Instead of relying on dialogue, the piece builds its message through pacing and visual disruption, questioning how digital systems shape our attention, identity, and everyday life.</p><br><p><em>Tools used: Adobe Premiere Pro</em></p>">
             <img src="Loading.jpg">
+            <div class="home-project-caption">
+                <span>Video art</span>
+                <h2>Technology Paradoxes</h2>
+            </div>
             </div>
 
         <!-- 2x3 -->
@@ -132,41 +128,28 @@
             data-hover-text="ICA San José Field Trip Vlog" data-video-id="s5MFEblpD4w"
             data-caption="<h3>ICA San José Field Trip Vlog</h3><p>This vlog documents my visit to the ICA in downtown San José through a mix of camera angles and quick storytelling. I use concise narration to guide viewers from <em>Data Trust</em>, which prompted me to reflect on AI and our roots, to <em>My Body Was a River Once</em>, whose imagery and atmosphere felt meditative. Moving quickly between the galleries keeps the story focused while still sharing my personal reactions to two very different works.</p><br><p><em>Tools used: Phone Camera, Adobe Premiere Pro</em></p>">
             <img src="ICA.jpg">
-            </div>
-
-        <!-- Video Modal Container -->
-            <div id="videoModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-
-                <button id="prevBtn" class="nav-btn left">◀</button>
-                <button id="nextBtn" class="nav-btn right">▶</button>
-                
-                    <div class="video-container">
-                    <iframe id="videoPlayer" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer;
-                    autoplay; clipboard-write; 
-                    encrypted-media; gyroscope; 
-                    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    
-        <!-- NEW: Image tag for full-size pictures (Hidden by default) -->
-                    <img id="modalImage" src="" alt="Modal View" style="display: none;">
-                </div>
-
-                    <div id="videoCaption" class="video-caption"></div>
+            <div class="home-project-caption">
+                <span>Documentary</span>
+                <h2>ICA San José Field Trip Vlog</h2>
             </div>
             </div>
+
     </div>
 
 
 <!-- Work Project Showcase line 3-->
  <!-- Sakura video-->
     <!-- Video Grid Container -->
-    <div class="video-grid video-grid--feature-right">
+    <div class="home-project-group">
         <!-- Video Thumbnail 1 -->
             <div class="video-thumb" data-type="video" 
             data-hover-text="Society of Spectacle" data-video-id="nF94g0yWZJ4" 
             data-caption="<h3>Society of Spectacle</h3><p>This video explores how digital platforms make us visible in ways we may not fully recognize. As we are watched, our images and actions can be collected, processed into data, and shaped by systems beyond our awareness. I convey this loss of privacy and control through editing techniques that cut, fuse, and drag video fragments across the screen, turning the act of watching into a reminder of how easily people can be observed, rearranged, and transformed into data.</p><br><p><em>Tools used: Adobe Premiere Pro, After Effects</em></p>">
             <img src="eye.jpg">
+            <div class="home-project-caption">
+                <span>Video art</span>
+                <h2>Society of Spectacle</h2>
+            </div>
             </div>
 
         <!-- Video Thumbnail 2 (Sits directly next to Thumbnail 1) -->
@@ -176,6 +159,10 @@
             I also learn how to storyboard and plan out the animation to make it more effective and engaging. The final product is a short animation that tells a simple story with a clear beginning, middle, and end.
             </p><br><p><em>Tools used: Adobe After Effects, Premiere Pro</em></p>">
             <img src="asd.jpg">
+            <div class="home-project-caption">
+                <span>Animation</span>
+                <h2>Silly Day</h2>
+            </div>
             </div>
 
         <!-- 3x2 -->
@@ -183,30 +170,14 @@
             data-hover-text="The Primer Animation Project" data-video-id="acddvax4AlM" 
             data-caption="<h3>The Primer Animation Project</h3><p>This short, jazzy YouTube intro was a pre-animation exercise leading up to my Digital Animation Project. I used it to explore how keyframe animation can bring a concept to life, timing movement and transitions to create a quick, energetic sequence that fits the intended style.</p><br><p><em>Tools used: Adobe After Effects, Premiere Pro</em></p>">
             <img src="intro.jpg">
-            </div>
-
-        <!-- Video Modal Container -->
-            <div id="videoModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-
-                <button id="prevBtn" class="nav-btn left">◀</button>
-                <button id="nextBtn" class="nav-btn right">▶</button>
-                
-                    <div class="video-container">
-                    <iframe id="videoPlayer" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer;
-                    autoplay; clipboard-write; 
-                    encrypted-media; gyroscope; 
-                    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    
-        <!-- NEW: Image tag for full-size pictures (Hidden by default) -->
-                    <img id="modalImage" src="" alt="Modal View" style="display: none;">
-                </div>
-
-                    <div id="videoCaption" class="video-caption"></div>
+            <div class="home-project-caption">
+                <span>Animation</span>
+                <h2>The Primer Animation Project</h2>
             </div>
             </div>
+
     </div>
+</section>
 <div id="videoModal" class="modal">
     <div class="modal-content">
         <!-- Close Button (X Symbol) -->

@@ -51,6 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("nextBtn");
 
   let currentIndex = 0;
+  let activeGalleryFiles = [];
+  let activeGalleryIndex = 0;
+
+  modalImage.tabIndex = 0;
+  modalImage.addEventListener("click", () => modalImage.focus());
+
+  function setGalleryImage(index) {
+    if (activeGalleryFiles.length === 0) return;
+
+    activeGalleryIndex = (index + activeGalleryFiles.length) % activeGalleryFiles.length;
+    modalImage.src = activeGalleryFiles[activeGalleryIndex];
+    modalImage.alt = `${thumbnails[currentIndex].getAttribute("data-hover-text") || "Project"} image ${activeGalleryIndex + 1} of ${activeGalleryFiles.length}`;
+
+    const counter = modal.querySelector(".gallery-carousel-counter");
+    if (counter) counter.textContent = `${activeGalleryIndex + 1} / ${activeGalleryFiles.length}`;
+  }
 
   // Smart update function handling videos, images, and layout classes
   function updateModalMedia(index) {
@@ -69,6 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Clear out extra media generated on previous view
     const oldExtras = modal.querySelectorAll(".modal-extra-media");
     oldExtras.forEach(el => el.remove());
+    const oldCarouselControls = modal.querySelectorAll(".gallery-carousel-controls");
+    oldCarouselControls.forEach(el => el.remove());
 
     // 3. Split media files
     const mediaFiles = mediaSource.split(",").map(file => file.trim()).filter(Boolean);
@@ -76,10 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 4. Handle PRIMARY media item layout
     const videoContainer = modal.querySelector(".video-container");
-    modal.querySelector(".modal-content").classList.toggle(
-      "has-large-images",
-      thumb.hasAttribute("data-modal-large-images")
-    );
+    const modalContent = modal.querySelector(".modal-content");
+    const hasImageCarousel = thumb.hasAttribute("data-gallery-carousel");
+    activeGalleryFiles = hasImageCarousel ? mediaFiles : [];
+    activeGalleryIndex = 0;
+    modalContent.classList.toggle("has-large-images", thumb.hasAttribute("data-modal-large-images"));
+    modalContent.classList.toggle("is-compact-gallery", thumb.hasAttribute("data-compact-gallery"));
+    modalContent.classList.toggle("has-image-carousel", hasImageCarousel);
 
     if (mediaType === "video") {
       videoContainer.classList.add("has-video");
@@ -93,12 +114,43 @@ document.addEventListener("DOMContentLoaded", () => {
       videoContainer.classList.remove("has-video");
       
       modalImage.src = primaryFile;
+      const thumbnailImage = thumb.querySelector("img");
+      modalImage.alt = thumbnailImage ? thumbnailImage.alt : "";
       modalImage.style.display = "block";
       iframe.style.display = "none";
+
+      if (hasImageCarousel) {
+        modalImage.alt = `${thumb.getAttribute("data-hover-text") || "Project"} image 1 of ${mediaFiles.length}`;
+
+        const controls = document.createElement("div");
+        controls.className = "gallery-carousel-controls";
+
+        const previousImage = document.createElement("button");
+        previousImage.type = "button";
+        previousImage.className = "gallery-carousel-button";
+        previousImage.setAttribute("aria-label", "Previous image");
+        previousImage.textContent = "Previous";
+        previousImage.addEventListener("click", () => setGalleryImage(activeGalleryIndex - 1));
+
+        const counter = document.createElement("span");
+        counter.className = "gallery-carousel-counter";
+        counter.setAttribute("aria-live", "polite");
+        counter.textContent = `1 / ${mediaFiles.length}`;
+
+        const nextImage = document.createElement("button");
+        nextImage.type = "button";
+        nextImage.className = "gallery-carousel-button";
+        nextImage.setAttribute("aria-label", "Next image");
+        nextImage.textContent = "Next";
+        nextImage.addEventListener("click", () => setGalleryImage(activeGalleryIndex + 1));
+
+        controls.append(previousImage, counter, nextImage);
+        videoCaption.parentNode.insertBefore(controls, videoCaption);
+      }
     }
 
     // 5. Handle EXTRA media items
-    if (mediaFiles.length > 1) {
+    if (mediaFiles.length > 1 && !hasImageCarousel) {
       for (let i = 1; i < mediaFiles.length; i++) {
         const file = mediaFiles[i];
 
@@ -132,6 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const extraImg = document.createElement("img");
           extraImg.src = file;
           extraImg.className = "modal-extra-media";
+          extraImg.alt = `${thumb.getAttribute("data-hover-text") || "Project"} image ${i + 1}`;
+          extraImg.loading = "lazy";
           
           videoCaption.parentNode.insertBefore(extraImg, videoCaption);
         }
@@ -202,6 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const oldExtras = modal.querySelectorAll(".modal-extra-media");
     oldExtras.forEach(el => el.remove());
+    const oldCarouselControls = modal.querySelectorAll(".gallery-carousel-controls");
+    oldCarouselControls.forEach(el => el.remove());
   }
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -213,8 +269,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (modal.style.display === "flex") {
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight") showNext();
-      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") {
+        if (activeGalleryFiles.length && document.activeElement === modalImage) {
+          e.preventDefault();
+          setGalleryImage(activeGalleryIndex + 1);
+        }
+        else showNext();
+      }
+      if (e.key === "ArrowLeft") {
+        if (activeGalleryFiles.length && document.activeElement === modalImage) {
+          e.preventDefault();
+          setGalleryImage(activeGalleryIndex - 1);
+        }
+        else showPrev();
+      }
     }
   });
 });
